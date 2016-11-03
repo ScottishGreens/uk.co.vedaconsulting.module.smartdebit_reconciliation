@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <td>{$form.email_address.label}</td>
-            <td>{$SDMandateArray.email_address} <a target="_blank" href="/civicrm/contact/search/custom?csid=15&reset=1&text={$SDMandateArray.email_address}&table=Contact&force=1">Search for this email address</a></td>
+            <td>{$SDMandateArray.email_address}<br/><a target="_blank" href="/civicrm/contact/search/custom?csid=15&reset=1&text={$SDMandateArray.email_address}&table=Contact&force=1">Search for this email address</a></td>
         </tr>
         <tr>
             <td>{$form.regular_amount.label}</td>
