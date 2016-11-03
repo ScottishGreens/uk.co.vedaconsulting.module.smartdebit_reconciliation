@@ -1,6 +1,6 @@
 <h3>{ts}Contact Membership and Contribution Recur{/ts}</h3>
 <div class="crm-form-block">
-  <table class="crm-info-panel">
+  <table class="crm-info-panel table">
 		
     <tr>
       <td>

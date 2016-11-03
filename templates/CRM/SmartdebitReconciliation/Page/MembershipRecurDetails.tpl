@@ -1,6 +1,6 @@
 <h3>{ts}View Contact Details, Membership and Contribution Recur{/ts}</h3>
 <div class="crm-form-block">
-  <table class="crm-info-panel">
+  <table class="crm-info-panel table">
     <tr>
       <td width="30%">
         Smart Debit Reference :
@@ -115,6 +115,6 @@
     {assign var=aContributionRecurId value=$aContributionRecur.id}
     {capture assign=crmURL}{crmURL p='civicrm/smartdebit/reconciliation/fix-contact-rec' q="cid=$aContactId&mid=$aMembershipId&cr_id=$aContributionRecurId&reference_number=$reference_number"}{/capture}
     <span class="crm-button crm-button-type-upload crm-button_qf_ContactDetails_upload">
-  <input type="submit" name="submit" value="Submit" onclick="parent.location='{$crmURL}'"/>
+  <input type="submit" name="submit" value="Submit" class="btn btn-default" onclick="parent.location='{$crmURL}'"/>
     </span>
 </div>
