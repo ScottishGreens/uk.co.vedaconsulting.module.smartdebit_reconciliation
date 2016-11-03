@@ -24,52 +24,50 @@
  +--------------------------------------------------------------------+
 *}
 {if $sync eq 0}
-<table>
-  <tr>      
-    <td>
-      <div style="height:150px; overflow:auto;">
-	<p>
-	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkMissingFromCivi=1' h=0}">Show All Mandates Missing from CiviCRM</a><br />
-	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkMissingFromSD=1' h=0}">Show All Mandates Missing from Smart Debit</a><br />
-	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkAmount=1' h=0}">Show All Mandates with Differing Amounts</a><br />
-	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkFrequency=1' h=0}">Show All Mandates with Differing Frequencies</a><br />
-	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkStatus=1' h=0}">Show All Mandates with Differing Status</a><br />
-	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkPayerReference=1' h=0}">Show All Mandates with missing Contact ID from CiviCRM</a><br />
-	</p>      
-      </div>
-    </td>
+<div class="panel panel-default panel-body">
+  <div class="row">
+    <div class="col-sm-6">
+    	<p>
+    	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkMissingFromCivi=1' h=0}">Show All Mandates Missing from CiviCRM</a><br />
+    	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkMissingFromSD=1' h=0}">Show All Mandates Missing from Smart Debit</a><br />
+    	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkAmount=1' h=0}">Show All Mandates with Differing Amounts</a><br />
+    	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkFrequency=1' h=0}">Show All Mandates with Differing Frequencies</a><br />
+    	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkStatus=1' h=0}">Show All Mandates with Differing Status</a><br />
+    	  <a href="{crmURL p='civicrm/smartdebit/reconciliation/list' q='checkPayerReference=1' h=0}">Show All Mandates with missing Contact ID from CiviCRM</a><br />
+    	</p>  
+    </div>
     {if $directDebitArray}
-    <td>
+    <div class="col-sm-6">
       <div style="height:150px; overflow:auto;">
-	<h3>{ts}Direct Debit System Setting{/ts}</h3>
-	<div id="help" class="tasklist">{ts}Make sure settings are correct to avoid errors before click fix me, eg payment_instrument_id{/ts}</div>
-	<span style="float:right;"><a href="{crmURL p="civicrm/directdebit/display"}" target="_new">Edit Setting</a></span>
-	<table>
-	  <tr style="background-color: #CDE8FE;">
-	    <td><b>{ts}Id{/ts}</b></td>
-	    <td><b>{ts}Name{/ts}</td>
-	    <td><b>{ts}Value{/ts}</td>
-	  </tr>
-	  {foreach from=$directDebitArray item=row}
-	    {assign var=id value=$row.id}
-	    <tr>
-	      <td>{$row.id}</td>
-	      <td>{$row.name}</td>
-	      <td>{$row.value}</td>
-	    </tr>
-	  {/foreach}  
-	</table>
+      	<h3>{ts}Direct Debit System Setting{/ts}</h3>
+      	<div id="help" class="tasklist">{ts}Make sure settings are correct to avoid errors before click fix me, eg payment_instrument_id{/ts}</div>
+      	<span style="float:right;"><a href="{crmURL p="civicrm/directdebit/display"}" target="_new">Edit Setting</a></span>
+      	<table>
+      	  <tr style="background-color: #CDE8FE;">
+      	    <td><b>{ts}Id{/ts}</b></td>
+      	    <td><b>{ts}Name{/ts}</td>
+      	    <td><b>{ts}Value{/ts}</td>
+      	  </tr>
+      	  {foreach from=$directDebitArray item=row}
+      	    {assign var=id value=$row.id}
+      	    <tr>
+      	      <td>{$row.id}</td>
+      	      <td>{$row.name}</td>
+      	      <td>{$row.value}</td>
+      	    </tr>
+      	  {/foreach}  
+      	</table>
       </div>
-    </td>
+    </div>
     {/if}
-  </tr>
-</table>
+    </div>
+</div>
 {/if}
 <h3>{ts}Mis-Matched Contacts {*(Limited to 200 Records)*}{/ts}</h3>
 <div style="min-height:400px;"> 
         
-    <table  class="selector row-highlight">
-        <tr style="background-color: #CDE8FE;">
+    <table  class="table table-striped table-compresssed table-bordered selector row-highlight">
+        <tr>
            <td><b>{ts}Transaction ID{/ts}</td>
            <td><b>{ts}Contact{/ts}</td>
            <td><b>{ts}Differences{/ts}</td>
@@ -115,7 +113,7 @@
                 {/if}
                 <td>
                 {if $row.fix_me_url}
-                    <a href="{$row.fix_me_url}" target="_new">Fix Me</a>
+                    <a class="btn btn-sm btn-default" href="{$row.fix_me_url}" target="_new">Fix Me</a>
                 {/if}
                 </td>
             </tr>
