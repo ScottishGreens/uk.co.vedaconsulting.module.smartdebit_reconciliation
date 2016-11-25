@@ -18,7 +18,11 @@
         </tr>
         <tr>
             <td>{$form.email_address.label}</td>
-            <td>{$SDMandateArray.email_address}<br/><a target="_blank" href="/civicrm/contact/search/custom?csid=15&reset=1&text={$SDMandateArray.email_address}&table=Contact&force=1">Search for this email address</a></td>
+            <td>{$SDMandateArray.email_address}<br/>
+            <a target="_blank" href="/civicrm/contact/search/custom?csid=15&reset=1&text={$SDMandateArray.email_address}&table=Contact&force=1">Search for this email address</a><br/>
+            <a target="_blank" href="https://goad.scottishgreens.org.uk/member/list?email={$SDMandateArray.email_address}">Search GOAD members for this email address</a><br/>
+            <a target="_blank" href="https://goad.scottishgreens.org.uk/ex_member/list?email={$SDMandateArray.email_address}">Search GOAD ex members for this email address</a>
+            </td>
         </tr>
         <tr>
             <td>{$form.regular_amount.label}</td>
