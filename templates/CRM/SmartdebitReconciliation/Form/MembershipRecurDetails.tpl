@@ -56,6 +56,14 @@
     </tr>
     <tr>
       <td>
+        <label>Linked Contact ID</label>
+      </td>
+      <td>
+       {$form.cid.html} <a id="remove-contact-link">Search for new Contact</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
         {$form.contact_name.label} 
       </td>
       <td>
@@ -104,6 +112,15 @@
       cj("#contact_name", $form).change(function() {
 	var data = cj( '#contact_name' ).select2('data');
 	var cid  = data.id;
+
+  if (cj('#reference_number').value() !== "") {
+    var removeContactLinkURL = "/civicrm/smartdebit/reconciliation/fixmissingcivi?cid=44507&reference_number=" . cj('#reference_number').value();
+    cj('#remove-contact-link').href();   
+  }
+  else {
+     cj('#remove-contact-link').parents('tr').hide();
+  }
+
 	cj('input[name=cid]').val(cid);
 	 cj('#membership_record').parents('tr').show();
           cj('#contribution_recur_record').parents('tr').show();
