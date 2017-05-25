@@ -113,14 +113,6 @@
 	var data = cj( '#contact_name' ).select2('data');
 	var cid  = data.id;
 
-  if (cj('#reference_number').value() !== "") {
-    var removeContactLinkURL = "/civicrm/smartdebit/reconciliation/fixmissingcivi?cid=44507&reference_number=" . cj('#reference_number').value();
-    cj('#remove-contact-link').href();   
-  }
-  else {
-     cj('#remove-contact-link').parents('tr').hide();
-  }
-
 	cj('input[name=cid]').val(cid);
 	 cj('#membership_record').parents('tr').show();
           cj('#contribution_recur_record').parents('tr').show();
@@ -197,10 +189,13 @@
           cj('#contribution_recur_record').parents('tr').show();
           cj('.crm-submit-buttons').show();
           getMembershipAndRecur(cid);
+          var removeContactLinkURL = "/civicrm/smartdebit/reconciliation/fixmissingcivi?reference_number=" + cj('#reference_number').val();
+          cj('#remove-contact-link', $form).attr('href',removeContactLinkURL).parent().prepend(cid);
       } else {
           cj('#membership_record').parents('tr').hide();
           cj('#contribution_recur_record').parents('tr').hide();
           cj('.crm-submit-buttons').hide();
+          cj('#remove-contact-link', $form).parents('tr').hide();
       }
       // When membership option is changed to 'Donation', show only recurring contributions which are not linked to memberships.
       cj( "#membership_record" ).change(function() {
