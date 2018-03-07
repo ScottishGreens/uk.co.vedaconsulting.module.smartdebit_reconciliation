@@ -59,7 +59,7 @@
         <label>Linked Contact ID</label>
       </td>
       <td>
-       <a href="/civicrm/contact/view?reset=1&cid={$form.cid.html}">{$form.cid.html}</a> <a id="remove-contact-link">Search for new Contact</a>
+       {$form.cid.html}<a id="link_to_contact" target="_blank">Link to Contact</a> <a id="remove-contact-link">Search for new Contact</a>
       </td>
     </tr>
     <tr>
@@ -109,12 +109,13 @@
       var contactUrl = {/literal}"{crmURL p='civicrm/ajax/rest' q='className=CRM_Contact_Page_AJAX&fnName=getContactList&json=1&context=navigation' h=0 }"{literal};
       var getTemplateContentUrl = {/literal}"{crmURL p='civicrm/ajax/rest' h=0 q='className=CRM_SmartdebitReconciliation_Page_AJAX&fnName=getMembershipByContactID&json=1'}"{literal} 
       var $form = cj("form.{/literal}{$form.formClass}{literal}");
+      cj('#link_to_contact').attr('href',"/civicrm/contact/view?reset=1&cid=" + cj("input[name=cid]").val());
       cj("#contact_name", $form).change(function() {
-	var data = cj( '#contact_name' ).select2('data');
-	var cid  = data.id;
+        	var data = cj( '#contact_name' ).select2('data');
+        	var cid  = data.id;
 
-	cj('input[name=cid]').val(cid);
-	 cj('#membership_record').parents('tr').show();
+        	cj('input[name=cid]').val(cid);
+        	 cj('#membership_record').parents('tr').show();
           cj('#contribution_recur_record').parents('tr').show();
           cj('.crm-submit-buttons').show();
           getMembershipAndRecur(cid);
