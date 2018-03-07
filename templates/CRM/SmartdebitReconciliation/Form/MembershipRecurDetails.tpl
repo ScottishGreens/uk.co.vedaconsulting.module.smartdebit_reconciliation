@@ -59,7 +59,7 @@
         <label>Linked Contact ID</label>
       </td>
       <td>
-       {$form.cid.html} <a id="remove-contact-link">Search for new Contact</a>
+       <a href="/civicrm/contact/view?reset=1&cid={$form.cid.html}">{$form.cid.html}</a> <a id="remove-contact-link">Search for new Contact</a>
       </td>
     </tr>
     <tr>
